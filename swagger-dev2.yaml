@@ -1,0 +1,1189 @@
+swagger: '2.0'
+info:
+  version: 0.0.1
+  title: bc server
+  description: Duke decentralize bc
+basePath: /api
+paths:
+  /Resident:
+    post:
+      tags:
+      - Resident
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: createResident
+      parameters:
+      - name: data
+        in: body
+        description: Model instance data
+        required: true
+        schema:
+          description: Model instance data
+          $ref: '#/definitions/Resident'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Resident'
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+    get:
+      tags:
+      - Resident
+      summary: Get all residents
+      operationId: getAllResidents
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Resident'
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+  '/Resident/{id}':
+    get:
+      tags:
+      - Resident
+      summary: 'Find a resident by id'
+      operationId: findResidentById
+      parameters:
+      - name: id
+        in: path
+        description: Resident's ID
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Resident'
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+    put:
+      tags:
+      - Resident
+      summary: Update resident by ID.
+      operationId: updateResident
+      parameters:
+      - name: id
+        in: path
+        description: Resident's ID
+        required: true
+        type: string
+      - name: data
+        in: body
+        description: Resident's object
+        required: true
+        schema:
+          description: Model instance data
+          $ref: '#/definitions/Resident'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Resident'
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+    delete:
+      tags:
+      - Resident
+      summary: 'Delete resident by ID'
+      operationId: deleteResidentById
+      parameters:
+      - name: id
+        in: path
+        description: Model id
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+  /Bank:
+    post:
+      tags:
+      - Bank
+      summary: Create a new Bank
+      operationId: createBank
+      parameters:
+      - name: data
+        in: body
+        description: Bank object
+        required: true
+        schema:
+          description: Model bank data
+          $ref: '#/definitions/Bank'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Bank'
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+    get:
+      tags:
+      - Bank
+      summary: Get all banks
+      operationId: getAllBanks
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Bank'
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+  '/Bank/{id}':
+    get:
+      tags:
+      - Bank
+      summary: 'Find bank by id'
+      operationId: findBankById
+      parameters:
+      - name: id
+        in: path
+        description: Bank object's id
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Bank'
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+    put:
+      tags:
+      - Bank
+      summary: Update bank by id
+      operationId: updateBank
+      parameters:
+      - name: id
+        in: path
+        description: Bank's id
+        required: true
+        type: string
+      - name: data
+        in: body
+        description: Bank's object
+        required: true
+        schema:
+          description: Bank's object
+          $ref: '#/definitions/Bank'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Bank'
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+    delete:
+      tags:
+      - Bank
+      summary: Delete bank by id
+      operationId: deleteBank
+      parameters:
+      - name: id
+        in: path
+        description: Bank's id
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+  /Utility:
+    post:
+      tags:
+      - Utility
+      summary: Create a new Utility
+      operationId: createUtility
+      parameters:
+      - name: data
+        in: body
+        description: Utility object
+        required: true
+        schema:
+          description: Model instance data
+          $ref: '#/definitions/Utility'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Utility'
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+    get:
+      tags:
+      - Utility
+      summary: Get all Utilities
+      operationId: getAllUtilities
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Utility'
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+  '/Utility/{id}':
+    get:
+      tags:
+      - Utility
+      summary: Get Utility by id
+      operationId: findUtilityById
+      parameters:
+      - name: id
+        in: path
+        description: Utility id
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Utility'
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+    put:
+      tags:
+      - Utility
+      summary: Update Utility
+      operationId: update Utility
+      parameters:
+      - name: id
+        in: path
+        description: Utility id
+        required: true
+        type: string
+      - name: data
+        in: body
+        description: Utility object
+        required: true
+        schema:
+          description: Model instance data
+          $ref: '#/definitions/Utility'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Utility'
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+    delete:
+      tags:
+      - Utility
+      summary: Delete Utility
+      operationId: deleteUtility
+      parameters:
+      - name: id
+        in: path
+        description: Utility's ID
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+  /Token:
+    post:
+      tags:
+      - Token
+      summary: Create a new token
+      operationId: createToken
+      parameters:
+      - name: data
+        in: body
+        description: Token object
+        required: true
+        schema:
+          description: Model instance data
+          $ref: '#/definitions/Token'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Token'
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+    get:
+      tags:
+      - Token
+      summary: Get all tokens
+      operationId: getAllTokens
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Token'
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+  '/Token/{id}':
+    get:
+      tags:
+      - Token
+      summary: 'Find a model instance by {{id}} from the data source.'
+      operationId: findTokenById
+      parameters:
+      - name: id
+        in: path
+        description: Token's id
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Token'
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+    put:
+      tags:
+      - Token
+      summary: Update token by id
+      operationId: updateToken
+      parameters:
+      - name: id
+        in: path
+        description: Model id
+        required: true
+        type: string
+      - name: data
+        in: body
+        description: Token's object
+        required: true
+        schema:
+          description: Model instance data
+          $ref: '#/definitions/Token'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Token'
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+    delete:
+      tags:
+      - Token
+      summary: 'Delete token by id'
+      operationId: deleteToken
+      parameters:
+      - name: id
+        in: path
+        description: Token's id
+        required: true
+        type: string
+        format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+  /Energy:
+    post:
+      tags:
+      - Energy
+      summary: Create a new Energy Asset
+      operationId: createEnergy
+      parameters:
+      - name: data
+        in: body
+        description: Energy object
+        required: true
+        schema:
+          description: Model instance data
+          $ref: '#/definitions/Energy'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Energy'
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+    get:
+      tags:
+      - Energy
+      summary: Get all energy assets
+      operationId: getAllEnergy
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Energy'
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+  '/Energy/{id}':
+    get:
+      tags:
+      - Energy
+      summary: 'Find energy asset by id'
+      operationId: getEnergyById
+      parameters:
+      - name: id
+        in: path
+        description: Energy id
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Energy'
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+    put:
+      tags:
+      - Energy
+      summary: Update energy Asset
+      operationId: updateEnergy
+      parameters:
+      - name: id
+        in: path
+        description: Energy id
+        required: true
+        type: string
+      - name: data
+        in: body
+        description: Energy object
+        required: true
+        schema:
+          description: Model instance data
+          $ref: '#/definitions/Energy'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Energy'
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+    delete:
+      tags:
+      - Energy
+      summary: 'Delete energy Asset'
+      operationId: deleteEnergy
+      parameters:
+      - name: id
+        in: path
+        description: Energy id
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+  /Cash:
+    post:
+      tags:
+      - Cash
+      summary: Create a new cash asset
+      operationId: createCash
+      parameters:
+      - name: data
+        in: body
+        description: Model instance data
+        required: true
+        schema:
+          description: Model instance data
+          $ref: '#/definitions/Cash'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Cash'
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+    get:
+      tags:
+      - Cash
+      summary: Get all cash assets
+      operationId: getAllCash
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Cash'
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+  '/Cash/{id}':
+    get:
+      tags:
+      - Cash
+      summary: 'Find cash asset by id'
+      operationId: getCashById
+      parameters:
+      - name: id
+        in: path
+        description: Cash id
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Cash'
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+    put:
+      tags:
+      - Cash
+      summary: Update cash asset
+      operationId: updateCash
+      parameters:
+      - name: id
+        in: path
+        description: Cash id
+        required: true
+        type: string
+      - name: data
+        in: body
+        description: Cash object
+        required: true
+        schema:
+          description: Model instance data
+          $ref: '#/definitions/Cash'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Cash'
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+    delete:
+      tags:
+      - Cash
+      summary: 'Delete cash by id'
+      operationId: deleteCash
+      parameters:
+      - name: id
+        in: path
+        description: Cash id
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+  /EnergyTokenTransaction:
+    post:
+      tags:
+      - EnergyTokenTransaction
+      summary: Transact energy and token assets between 2 participants
+      operationId: energyTokenTransaction
+      parameters:
+      - name: data
+        in: body
+        description: EnergyTokenTransaction Object
+        required: true
+        schema:
+          description: Model instance data
+          $ref: '#/definitions/EnergyTokenTransaction'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/EnergyTokenTransaction'
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+    get:
+      tags:
+      - EnergyTokenTransaction
+      summary: Get All energytoken Transactions
+      operationId: getAllEnergyTokenTransaction
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/EnergyTokenTransaction'
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+  /CashTokenTransaction:
+    post:
+      tags:
+      - CashTokenTransaction
+      summary: Transaction of cash and token between 2 participants
+      operationId: cashTokenTransaction
+      parameters:
+      - name: data
+        in: body
+        description: CashTokenTransaction object
+        required: true
+        schema:
+          description: Model instance data
+          $ref: '#/definitions/CashTokenTransaction'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/CashTokenTransaction'
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+    get:
+      tags:
+      - CashTokenTransaction
+      summary: Get all cashtoken transactions
+      operationId: getAllCashTokenTransaction
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CashTokenTransaction'
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+  /Transaction/{id}:
+    get:
+      tags:
+      - Transactions
+      summary: 'Get transaction by id'
+      operationId: findTransactionById
+      parameters:
+      - name: id
+        in: path
+        description: Transaction id
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/EnergyTokenTransaction'
+        '500':
+          description: Internal server exception
+          schema:
+            $ref: '#/definitions/InternalError'
+        '400':
+          description: Bad Request exception
+          schema:
+            $ref: '#/definitions/BadRequestError'
+      deprecated: false
+tags:
+- name: Transactions
+  description: Transaction between participants
+- name: Resident
+  description: A participant named Resident
+- name: Bank
+  description: A participant named Bank
+- name: Utility
+  description: A participant named Utility
+- name: Token
+  description: An asset named Tokens
+- name: Energy
+  description: An asset named Energy
+- name: Cash
+  description: An asset named Cash
+- name: EnergyTokenTransaction
+  description: A transaction named EnergyTokenTransaction
+- name: CashTokenTransaction
+  description: A transaction named CashTokenTransaction
+consumes:
+- application/json
+- application/x-www-form-urlencoded
+- application/xml
+- text/xml
+produces:
+- application/json
+- application/xml
+- text/xml
+- application/javascript
+- text/javascript
+definitions:
+  InternalError:
+    description: Internal Server Error
+    properties:
+      message:
+        type: string
+        default: Internal Server Error
+  BadRequestError:
+    description: Bad Request Error
+    properties:
+      message:
+        type: string
+        default: Bad Request Error
+  Resident:
+    description: A participant named Resident
+    properties:
+      id:
+        default: sha256
+        description: Primary key for resident, backend creates uuid
+        type: string
+      firstName:
+        type: string
+      lastName:
+        type: string
+      alias:
+        description: Alias name to hide user
+        type: string
+      tokens:
+        description: The identifier of an struct of tokens
+        type: string
+      cash:
+        description: The identifier of an struct of cash
+        type: string
+      energy:
+        description: The identifier of an struct of energy
+        type: string
+      type:
+        description: Either Prosumer or Consumer
+        enum:
+        - Prosumer
+        - Consumer
+        type: string
+    required:
+    - type
+    - alias
+    - firstName
+    - lastName
+    - tokens
+    - cash
+    - energy
+    additionalProperties: false
+  Bank:
+    description: A participant named Bank
+    properties:
+      id:
+        description: Primary key for struct bank
+        type: string
+      name:
+        description: Name of bank
+        type: string
+      tokens:
+        description: The identifier of an struc of tokens
+        type: string
+      cash:
+        description: The identifier of an struct of cash
+        type: string
+    required:
+    - name
+    - tokens
+    - cash
+    additionalProperties: false
+  Utility:
+    description: A participant named Utility
+    properties:
+      id:
+        description: The instance identifier for struct UtilityCompany
+        type: string
+      name:
+        type: string
+      tokens:
+        description: The identifier of an struct of tokens
+        type: string
+      energy:
+        description: The identifier of an struct of energy
+        type: string
+    required:
+    - id
+    - name
+    - tokens
+    - energy
+    additionalProperties: false
+  Token:
+    description: An asset named Tokens
+    properties:
+      id:
+        description: The instance identifier for struct Tokens
+        type: string
+      value:
+        type: number
+        format: double
+      owner:
+        type: string
+      ownerType:
+        enum:
+        - Resident
+        - Bank
+        - Utility
+        type: string
+    required:
+    - value
+    - owner
+    - ownerType
+    additionalProperties: false
+  Energy:
+    description: An asset named Energy
+    properties:
+      id:
+        description: The instance identifier for this struct Energy
+        type: string
+      units:
+        type: string
+        enum:
+        - kWh
+      value:
+        type: number
+        format: double
+      owner:
+        type: string
+      ownerType:
+        enum:
+        - Resident
+        - Bank
+        - Utility
+        type: string
+    required:
+    - units
+    - value
+    - owner
+    - ownerType
+    additionalProperties: false
+  Cash:
+    description: An asset named Cash
+    properties:
+      id:
+        description: The instance identifier for this struct Cash
+        type: string
+      currency:
+        type: string
+        enum:
+        - USD
+      value:
+        type: number
+        format: double
+      owner:
+        type: string
+      ownerType:
+        enum:
+        - Resident
+        - Bank
+        - Utility
+        type: string
+    required:
+    - currency
+    - value
+    - owner
+    - ownerType
+    additionalProperties: false
+  EnergyTokenTransaction:
+    description: A transaction object name EnergyTokenTransaction
+    properties:
+      rate:
+        type: number
+        format: double
+      value:
+        type: number
+        format: double
+      tokenInc:
+        description: The identifier of an instance of coinsInc
+        type: string
+      tokenDec:
+        description: The identifier of an instance of coinsDec
+        type: string
+      energyInc:
+        description: The identifier of an instance of energyInc
+        type: string
+      energyDec:
+        description: The identifier of an instance of energyDec
+        type: string
+      transactionId:
+        description: txID of this transaction, returned if transaction is successful
+        type: string
+      timestamp:
+        type: string
+        format: date-time
+    required:
+    - rate
+    - value
+    - tokenInc
+    - tokenDec
+    - energyInc
+    - energyDec
+    - timestamp
+    additionalProperties: false
+  CashTokenTransaction:
+    description: A Transaction object for CashToken Transactions
+    properties:
+      value:
+        type: number
+        format: double
+      tokenInc:
+        description: The identifier of asset Token to increment
+        type: string
+      tokenDec:
+        description: The identifier of asset Token to decrement
+        type: string
+      cashInc:
+        description: The identifier of asset Cash to increment
+        type: string
+      cashDec:
+        description: The identifier of asset Cash to decrement
+        type: string
+      transactionId:
+        description: Transaction ID for this transaction
+        type: string
+      timestamp:
+        type: string
+        format: date-time
+    required:
+    - value
+    - tokenInc
+    - tokenDec
+    - cashInc
+    - cashDec
+    - timestamp
+    additionalProperties: false
