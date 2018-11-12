@@ -57,3 +57,11 @@ module.exports.updateEnergy = function updateEnergy (req, res, next) {
       utils.writeJson(res, response);
     });
 };
+
+
+function mapper(payload){
+    return {
+        id : payload.id,
+
+    }
+}

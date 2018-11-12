@@ -3,8 +3,8 @@ const User = require('fabric-client/lib/User.js');
 const utils = require('./utils.js')
 const Client = require('fabric-client')
 const logger = Client.getLogger('./user-utils');
-const admin = process.env.CA_ADMIN
-const adminpw = process.env.CA_PW
+const admin = process.env.CA_ADMIN || 'admin';
+const adminpw = process.env.CA_PW || 'adminpw';
 
 let ca;
 function initCA(ORGS){
@@ -56,15 +56,13 @@ function createUser(client, username, password){
     const newMember = new User(username)
 
     let copService = client.getCertificateAuthority();
-    let admin = {
-        username: 'admin',
-        password: 'adminpw',
-    }
 
-    return client.setUserContext(admin)
+    let regReq = getRegisterRequest(username, password);
+
+    return client.setUserContext(getCACred())
         .then((adminUser) =>{
             console.log('Admin user: '+adminUser)
-            return copService.register(getRegisterRequest(username, password), adminUser)
+            return copService.register(regReq, adminUser)
         }).then((secret) =>{
             let enrollReq = {
                 enrollmentID: username,
@@ -73,8 +71,8 @@ function createUser(client, username, password){
             newMember._enrollmentSecret = secret;
             return copService.enroll(enrollReq)
         }).then((enrollment) =>{
-            newMember.setRoles(roles);
-            newMember.setAffiliation(affiliation);
+            newMember.setRoles(regReq.roles);
+            newMember.setAffiliation(regReq.affiliation);
             return newMember.setEnrollment(enrollment.key, enrollment.certificate, client.getMspid())
         }).then((() =>{
             console.log("created user :"+newMember)

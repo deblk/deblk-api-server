@@ -1,5 +1,11 @@
 'use strict';
+const util = require('./../../fabric/utils');
+const fabUtil = require('./../../fabric/fab-utils');
+const userUtil = require('./../../fabric/user-utils');
+const Enum = require('enum');
+const FUNC = new Enum({
 
+});
 
 /**
  * Get transaction by id
@@ -26,5 +32,41 @@ exports.findTransactionById = function(id) {
       resolve();
     }
   });
+}
+
+
+/**
+ * Get all transactions
+ *
+ * returns List
+ **/
+exports.getAllTransactions = function() {
+    return new Promise(function(resolve, reject) {
+        var examples = {};
+        examples['application/json'] = [ {
+            "status" : "firstName",
+            "timestamp" : "lastName",
+            "alias" : "alias",
+            "address" : "tokens",
+            "id" : "sha256",
+            "username" : "Prosumer",
+            "state" : "cash",
+            "transactionId" : "energy"
+        }, {
+            "status" : "firstName",
+            "timestamp" : "lastName",
+            "alias" : "alias",
+            "address" : "tokens",
+            "id" : "sha256",
+            "username" : "Prosumer",
+            "state" : "cash",
+            "transactionId" : "energy"
+        } ];
+        if (Object.keys(examples).length > 0) {
+            resolve(examples[Object.keys(examples)[0]]);
+        } else {
+            resolve();
+        }
+    });
 }
 

@@ -23,3 +23,11 @@ module.exports.getAllEnergyTokenTransaction = function getAllEnergyTokenTransact
       utils.writeJson(res, response);
     });
 };
+
+
+function mapper(payload){
+    return {
+        id : payload.id,
+
+    }
+}

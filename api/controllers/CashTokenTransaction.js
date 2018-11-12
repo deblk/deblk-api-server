@@ -23,3 +23,11 @@ module.exports.getAllCashTokenTransaction = function getAllCashTokenTransaction 
       utils.writeJson(res, response);
     });
 };
+
+
+function mapper(payload){
+    return {
+        id : payload.id,
+
+    }
+}

@@ -57,3 +57,13 @@ module.exports.updateUtility = function updateUtility (req, res, next) {
       utils.writeJson(res, response);
     });
 };
+
+
+function mapper(payload){
+    return {
+        id : payload.id,
+        name: payload.name,
+        tokens: payload.tokens,
+        energy: payload.energy
+    }
+}

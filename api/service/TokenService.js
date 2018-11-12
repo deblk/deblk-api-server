@@ -1,5 +1,11 @@
 'use strict';
+const util = require('./../../fabric/utils');
+const fabUtil = require('./../../fabric/fab-utils');
+const userUtil = require('./../../fabric/user-utils');
+const Enum = require('enum');
+const FUNC = new Enum({
 
+});
 
 /**
  * Create a new token

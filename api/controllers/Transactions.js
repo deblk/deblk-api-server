@@ -13,3 +13,27 @@ module.exports.findTransactionById = function findTransactionById (req, res, nex
       utils.writeJson(res, response);
     });
 };
+
+module.exports.getAllTransactions = function getAllTransactions (req, res, next) {
+    Transactions.getAllTransactions()
+        .then(function (response) {
+            utils.writeJson(res, response);
+        })
+        .catch(function (response) {
+            utils.writeJson(res, response);
+        });
+};
+
+
+function mapper(payload){
+    return {
+        status : payload,
+        timestamp: payload,
+        alias: payload,
+        address: payload,
+        username: payload,
+        state: payload,
+        transactionId: payload
+
+    }
+}

@@ -3,6 +3,7 @@ const logger = utils.getLogger('utils');
 const path = require('path');
 const Client = require('fabric-client')
 const KEYSTOREPATH = './testkeystore.txt'
+const cp = __dirname + '/cp.json';
 
 module.exports.tlsOptions = {
     trustedRoots: [],
@@ -14,6 +15,10 @@ module.exports.KVS = path.join("./", 'hfc-test-kvs');
 module.exports.storePathForOrg = function(org) {
     return module.exports.KVS + '_' + org;
 };
+
+module.exports.getClient = function(){
+    return Client.loadFromConfig(cp);
+}
 
 
 module.exports.getDefaultCryptoSuite = function(){

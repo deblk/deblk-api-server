@@ -972,7 +972,7 @@ paths:
         200:
           description: "Request was successful"
           schema:
-            $ref: "#/definitions/EnergyTokenTransaction"
+            $ref: "#/definitions/Transaction"
         400:
           description: "Bad Request exception"
           schema:
@@ -982,7 +982,48 @@ paths:
           schema:
             $ref: "#/definitions/InternalError"
       x-swagger-router-controller: "Transactions"
+  /Transaction:
+    get:
+      tags:
+      - "Transactions"
+      summary: "Get all transactions"
+      operationId: "getAllTransactions"
+      responses:
+        200:
+          description: "Request was successful"
+          schema:
+            type: array
+            $ref: '#/definitions/Transaction'
+      x-swagger-router-controller: "Transactions"
 definitions:
+  Transaction:
+    type: "object"
+    properties:
+      status:
+        type: "string"
+        description: "status of the transaction, either complete/rejected"
+        default: "complete"
+        enum:
+          - complete
+          - rejected
+      timestamp:
+        type: "string"
+        description: "timestamp of when transaction was recorded"
+      alias:
+        type: "string"
+        description: "alias of the opposing transactor"
+      address:
+        type: "string"
+        description: "address of the opposing transactor"
+      username:
+        type: "string"
+        description: "username of the opposing transactor"
+      state:
+        type: "string"
+        description: "location of the state of the opposing transactor"
+      transactionId:
+        type: "string"
+        description: "Transaction id of transaction"
   User:
     properties:
       username:

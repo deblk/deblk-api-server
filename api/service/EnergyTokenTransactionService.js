@@ -1,5 +1,11 @@
-'use strict';
+'use strict'
+const util = require('./../../fabric/utils');
+const fabUtil = require('./../../fabric/fab-utils');
+const userUtil = require('./../../fabric/user-utils');
+const Enum = require('enum');
+const FUNC = new Enum({
 
+});
 
 /**
  * Transact energy and token assets between 2 participants
