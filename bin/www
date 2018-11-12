@@ -44,7 +44,9 @@ SwaggerExpress.create(config, function(err, swaggerExpress){
     server.listen(port);
     server.on('error', onError);
     server.on('listening', onListening);
-    console.log(swaggerExpress.runner.swagger.paths);
+    if(swaggerExpress.runner.swagger.paths['/CashTokenTransaction']){
+      console.log("Listening on "+server.address() +" on port : "+port);
+    };
 
 });
 

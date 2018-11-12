@@ -7,6 +7,8 @@ info:
 host: "localhost:3000"
 basePath: "/api"
 tags:
+- name: "User"
+  description: "Register and enroll an user"
 - name: "Transactions"
   description: "Transaction between participants"
 - name: "Resident"
@@ -40,6 +42,29 @@ produces:
 - "application/javascript"
 - "text/javascript"
 paths:
+  /User:
+    post:
+      tags:
+      - "User"
+      summary: "Register and enroll a user to the fabric network"
+      operationId: "createUser"
+      parameters:
+      - in: "body"
+        name: "data"
+        description: "Model instance data"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        200:
+          description: "Request was successful"
+          schema:
+            $ref: "#/definitions/User"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/BadRequestError"
+      x-swagger-router-controller: "User"
   /Resident:
     get:
       tags:
@@ -958,6 +983,14 @@ paths:
             $ref: "#/definitions/InternalError"
       x-swagger-router-controller: "Transactions"
 definitions:
+  User:
+    properties:
+      username:
+        type: "string"
+        description: "Username of user"
+      secret:
+        type: "string"
+        description: "password of user"
   InternalError:
     properties:
       message:

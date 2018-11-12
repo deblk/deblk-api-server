@@ -24,7 +24,8 @@
     "pug": "2.0.0-beta11",
     "swagger-express-mw": "^0.7.0",
     "swagger-tools": "0.10.1",
-    "swagger-ui-express": "^4.0.1"
+    "swagger-ui-express": "^4.0.1",
+    "yamljs": "latest"
   },
   "devDependencies": {
     "chai": "^4.2.0",

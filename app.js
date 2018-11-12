@@ -2,7 +2,8 @@
 
 //swagger
 const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./api/swagger/swagger.json');
+const YAML = require('yamljs');
+const swaggerDocument = YAML.load('./api/swagger/swagger.yaml');
 
 
 var createError = require('http-errors');
